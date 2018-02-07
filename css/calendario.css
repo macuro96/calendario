@@ -1,0 +1,111 @@
+#calendario {
+    background-color: white;
+}
+
+#calendario .calendario-semana > div {
+    border: 1px solid rgb(196, 196, 196);
+    padding: 20px;
+    margin: 0px;
+
+    text-align: center;
+
+    width: 130px;
+
+}
+
+.calendario-encabezado {
+    margin-top: 20px;
+}
+
+.calendario-encabezado .calendario-semana > div {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.calendario-dia-encabezado {
+    font-weight: bold;
+}
+
+.calendario-dia {
+    padding-top: 0px !important;
+    padding-right: 5px !important;
+    text-align: right !important;
+
+    min-height: 120px;
+
+}
+
+.calendario-dia-fuera-mes {
+    color: rgb(196, 196, 196);
+}
+
+
+.calendario-dia-hoy {
+    background-color: rgb(253, 255, 220);
+}
+
+.calendario-evento {
+    color: white;
+    text-align: left;
+
+    font-size: 0.85em;
+    line-height: 1.3;
+
+    background-color: #337ab7;
+    border-radius: 4px;
+
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+
+    display: block;
+
+}
+
+.calendario-dia span {
+    margin-top: 3px; 
+    overflow: hidden;
+}
+
+.calendario-dia div {
+    margin-bottom: 5px !important;
+}
+
+@media (min-width: 990px) and (max-width: 1199px){
+    #calendario .calendario-semana > div {
+        width: 100px !important;
+    }
+}
+
+@media (min-width: 644px) and (max-width: 989px){
+    #calendario .calendario-semana > div {
+        width: 80px !important;
+    }
+
+    .calendario-dia-encabezado {
+        font-size: 10px;
+    }    
+
+}
+
+@media (max-width: 643px){
+    #calendario .calendario-semana > div {
+        width: 60px !important;
+    }
+
+    .calendario-dia-encabezado {
+        font-size: 8px;
+    }    
+
+}
+
+@media (max-width: 475px){
+    #calendario .calendario-semana > div {
+        width: 50px !important;
+    }
+
+    .calendario-dia-encabezado {
+        font-size: 8px;
+    }    
+
+}

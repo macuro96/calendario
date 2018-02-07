@@ -7,10 +7,66 @@
         <title>Calendario</title>
         
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/calendario.css" rel="stylesheet">
     </head>
 
     <body>
         
+        <div class="container">
+
+            <div id="calendario" class="row">
+                <div class="row calendario-encabezado">
+                    <div class="col-xs-1"></div>
+                    
+                    <div class="col-xs-10">
+                        <div class="row calendario-semana">
+                            <div class="col-xs-1 calendario-dia-encabezado">Lunes</div>
+                            <div class="col-xs-1 calendario-dia-encabezado">Martes</div>
+                            <div class="col-xs-1 calendario-dia-encabezado">Miércoles</div>
+                            <div class="col-xs-1 calendario-dia-encabezado">Jueves</div>
+                            <div class="col-xs-1 calendario-dia-encabezado">Viernes</div>
+                            <div class="col-xs-1 calendario-dia-encabezado">Sábado</div>
+                            <div class="col-xs-1 calendario-dia-encabezado">Domingo</div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-1"></div>
+                    
+                    <div class="col-xs-10">
+                        <div class="row calendario-semana">
+                            <div class="col-xs-1 calendario-dia calendario-dia-fuera-mes">4</div>
+                            <div class="col-xs-1 calendario-dia calendario-dia-fuera-mes">5</div>
+                            <div class="col-xs-1 calendario-dia">6</div>
+                            <div class="col-xs-1 calendario-dia calendario-dia-hoy">
+                                <div>7</div>
+                                <span class="calendario-evento">Entrenamiento</span>
+                                <span class="calendario-evento">Entrenamiento</span>
+                                <span class="calendario-evento">Entrenamiento</span>
+                            </div>
+                            <div class="col-xs-1 calendario-dia">8</div>
+                            <div class="col-xs-1 calendario-dia">9</div>
+                            <div class="col-xs-1 calendario-dia">10</div>
+                        </div>
+                        <div class="row calendario-semana">
+                            <div class="col-xs-1 calendario-dia">11</div>
+                            <div class="col-xs-1 calendario-dia">12</div>
+                            <div class="col-xs-1 calendario-dia">13</div>
+                            <div class="col-xs-1 calendario-dia">14</div>
+                            <div class="col-xs-1 calendario-dia">15</div>
+                            <div class="col-xs-1 calendario-dia">16</div>
+                            <div class="col-xs-1 calendario-dia">17</div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </body>
