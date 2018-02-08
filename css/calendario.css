@@ -9,42 +9,111 @@
 
     text-align: center;
 
-    width: 130px;
-
+    width: 14%;    
 }
 
-.calendario-encabezado {
+#calendario .calendario-semana > div.calendario-dia {
+    min-height: 150px;
+}
+
+#calendario .calendario-encabezado {
     margin-top: 20px;
 }
 
-.calendario-encabezado .calendario-semana > div {
+#calendario .calendario-encabezado .calendario-semana > div {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
 
-.calendario-dia-encabezado {
+#calendario .calendario-dia-encabezado {
     font-weight: bold;
+    color: #337ab7;
 }
 
-.calendario-dia {
+#calendario .calendario-dia-encabezado:nth-child(1)::before {
+    content: 'Lunes'
+}
+#calendario .calendario-dia-encabezado:nth-child(2)::before {
+    content: 'Martes'
+}
+#calendario .calendario-dia-encabezado:nth-child(3)::before {
+    content: 'Miércoles'
+}
+#calendario .calendario-dia-encabezado:nth-child(4)::before {
+    content: 'Jueves'
+}
+#calendario .calendario-dia-encabezado:nth-child(5)::before {
+    content: 'Viernes'
+}
+#calendario .calendario-dia-encabezado:nth-child(6)::before {
+    content: 'Sábado'
+}
+#calendario .calendario-dia-encabezado:nth-child(7)::before {
+    content: 'Domingo'
+}
+
+#calendario .calendario-dia {
     padding-top: 0px !important;
     padding-right: 5px !important;
     text-align: right !important;
-
-    min-height: 120px;
-
 }
 
-.calendario-dia-fuera-mes {
+#calendario .calendario-dia-fuera-mes {
     color: rgb(196, 196, 196);
 }
 
-
-.calendario-dia-hoy {
+#calendario .calendario-dia-hoy {
     background-color: rgb(253, 255, 220);
 }
 
-.calendario-evento {
+#calendario .calendario-dia-hoy div {
+    font-weight: bold;
+}
+
+#calendario .calendario-evento {
+    color: white;
+    background-color: #337ab7;
+
+    text-align: left;
+
+    font-size: 0.85em;
+    line-height: 1.3;
+
+    border-radius: 4px;
+
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+
+    display: block;
+}
+
+#calendario .calendario-evento[tipo="entrenamiento"] {
+    color: white !important;
+    background-color: #337ab7 !important;    
+}
+
+#calendario .calendario-evento[tipo="amistoso"] {
+    color: white !important;
+    background-color: #2da533 !important;    
+}
+
+#calendario .calendario-evento[tipo="evento"] {
+    color: white !important;
+    background-color: #a12da5 !important;    
+}
+
+#calendario .calendario-evento[tipo="torneo"] {
+    color: white !important;
+    background-color: #a3a52d !important;    
+}
+
+#calendario a:nth-child(n+5) span {
+    display: none;
+}
+
+#calendario a:nth-child(5)::after {
+    content: '...';
     color: white;
     text-align: left;
 
@@ -57,55 +126,121 @@
     padding: 2px;
     padding-left: 4px;
     padding-right: 4px;
-
-    display: block;
-
 }
 
-.calendario-dia span {
+#calendario .calendario-dia span::before {
+    content: attr(hora)" ";
+    font-weight: bold;
+}
+
+#calendario .calendario-dia span {
     margin-top: 3px; 
     overflow: hidden;
+    white-space: nowrap
 }
 
-.calendario-dia div {
+#calendario .calendario-dia div {
     margin-bottom: 5px !important;
 }
 
-@media (min-width: 990px) and (max-width: 1199px){
-    #calendario .calendario-semana > div {
-        width: 100px !important;
-    }
+#calendario .calendario-dia a {
+    text-decoration: none;
 }
 
-@media (min-width: 644px) and (max-width: 989px){
-    #calendario .calendario-semana > div {
-        width: 80px !important;
+@media  (max-width: 700px){
+    #calendario .calendario-dia {
+        min-height: 170px !important;    
     }
 
-    .calendario-dia-encabezado {
-        font-size: 10px;
-    }    
+    #calendario .calendario-evento {
+        padding-top: 2px;
+        padding-bottom: 2px;
+
+        margin-top: 8px;
+        margin-bottom: 8px;
+
+        font-size: 14px;
+    }
+
+    #calendario .calendario-dia-encabezado:nth-child(1)::before {
+        content: 'L'
+    }
+    #calendario .calendario-dia-encabezado:nth-child(2)::before {
+        content: 'M'
+    }
+    #calendario .calendario-dia-encabezado:nth-child(3)::before {
+        content: 'X'
+    }
+    #calendario .calendario-dia-encabezado:nth-child(4)::before {
+        content: 'J'
+    }
+    #calendario .calendario-dia-encabezado:nth-child(5)::before {
+        content: 'V'
+    }
+    #calendario .calendario-dia-encabezado:nth-child(6)::before {
+        content: 'S'
+    }
+    #calendario .calendario-dia-encabezado:nth-child(7)::before {
+        content: 'D'
+    }
 
 }
 
-@media (max-width: 643px){
+@media (max-width: 560px){
     #calendario .calendario-semana > div {
-        width: 60px !important;
-    }
-
-    .calendario-dia-encabezado {
-        font-size: 8px;
+        width: 100%;
     }    
 
-}
-
-@media (max-width: 475px){
-    #calendario .calendario-semana > div {
-        width: 50px !important;
+    #calendario a:nth-child(n+5) span {
+        display: block;
     }
 
-    .calendario-dia-encabezado {
-        font-size: 8px;
-    }    
+    #calendario a:nth-child(5)::after {
+        content: none;
+    }
+    #calendario .calendario-encabezado {
+        display: none;
+    }
+
+    #calendario .calendario-evento {
+        display: block;
+        padding-top: 3px; 
+        padding-bottom: 3px; 
+    }
+
+    #calendario .calendario-dia:nth-child(n+1):nth-child(-n+7):before {
+        font-weight: bold;
+        font-size: 20px;
+
+        color: #337ab7;
+    }
+
+    #calendario .calendario-dia:nth-child(1):before {
+        content: 'Lunes';
+    }
+
+    #calendario .calendario-dia:nth-child(2):before {
+        content: 'Martes';
+    }
+
+    #calendario .calendario-dia:nth-child(3):before {
+        content: 'Miércoles';
+    }
+
+    #calendario .calendario-dia:nth-child(4):before {
+        content: 'Jueves';
+    }
+
+    #calendario .calendario-dia:nth-child(5):before {
+        content: 'Viernes';
+    }
+
+    #calendario .calendario-dia:nth-child(6):before {
+        content: 'Sábado';
+    }
+
+    #calendario .calendario-dia:nth-child(7):before {
+        content: 'Domingo';
+    }
 
 }
