@@ -7,6 +7,7 @@
         <title>Calendario</title>
         
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!--<link href="css/bootstrap-glyphicons.css" rel="stylesheet" media="screen">-->
         <link href="css/calendario.css" rel="stylesheet">
     </head>
 
@@ -48,13 +49,13 @@
                             </div>
                             <div class="col-xs-1 calendario-dia calendario-dia-hoy">
                                 <div>7</div>
-                                <a role="button" href="#1"><span class="calendario-evento" hora="20:17" tipo="torneo">Torneo</span></a>
-                                <a role="button" href="#2"><span class="calendario-evento" hora="20:17" tipo="amistoso">Amistoso</span></a>
-                                <a role="button" href="#3"><span class="calendario-evento" hora="20:17" tipo="evento">Evento</span></a>
-                                <a role="button" href="#4"><span class="calendario-evento" hora="20:17" tipo="entrenamiento">Entrenamiento</span></a>
-                                <a role="button" href="#5"><span class="calendario-evento" hora="20:17" tipo="entrenamiento">Entrenamiento</span></a>
-                                <a role="button" href="#6"><span class="calendario-evento" hora="20:17" tipo="entrenamiento">Entrenamiento</span></a>
-                                <a role="button" href="#7"><span class="calendario-evento" hora="20:17" tipo="entrenamiento">Entrenamiento</span></a>
+                                <a href="#1"><span data-toggle="tooltip" data-placement="left" title="Torneo" class="calendario-evento" hora="20:17" tipo="torneo">Torneo</span></a>
+                                <a href="#3"><span data-toggle="tooltip" data-placement="left" title="Evento" class="calendario-evento" hora="20:17" tipo="evento">Evento</span></a>
+                                <a href="#2"><span data-toggle="tooltip" data-placement="left" title="Amistoso" class="calendario-evento" hora="20:17" tipo="amistoso">Amistoso</span></a>
+                                <a href="#4"><span data-toggle="tooltip" data-placement="left" title="Entrenamiento" class="calendario-evento" hora="20:17" tipo="entrenamiento">Entrenamiento</span></a>
+                                <a href="#5"><span data-toggle="tooltip" data-placement="left" title="Entrenamiento" class="calendario-evento" hora="20:17" tipo="entrenamiento">Entrenamiento</span></a>
+                                <a href="#6"><span data-toggle="tooltip" data-placement="left" title="Entrenamiento" class="calendario-evento" hora="20:17" tipo="entrenamiento">Entrenamiento</span></a>
+                                <a href="#7"><span data-toggle="tooltip" data-placement="left" title="Entrenamiento" class="calendario-evento" hora="20:17" tipo="entrenamiento">Entrenamiento</span></a>
                             </div>
                             <div class="col-xs-1 calendario-dia">
                                 <div>8</div>
@@ -94,11 +95,36 @@
                 </div>
 
             </div>
-
+            <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click para ir hacia arriba" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
         </div>
 
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 50) {
+                        $('#back-to-top').fadeIn();
+                    } else {
+                        $('#back-to-top').fadeOut();
+                    }
+                });
+
+                $('#back-to-top').click(function () {
+                    $('#back-to-top').tooltip('hide');
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 800);
+                    return false;
+                });
+
+                $('#back-to-top').tooltip('show');                
+            });        
+        </script>
+
     </body>
 
 </html>
