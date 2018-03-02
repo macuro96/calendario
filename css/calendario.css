@@ -252,12 +252,10 @@
 
 @media (max-width: 560px){
     #calendario span[size="grande"] {
-        /* Se modifica segun dayTo y monthTo */
         width: 104% !important;
     }
     
     #calendario span[size="grande"] div {
-        /* Se modifica segun dayTo y monthTo */
         width: 85% !important;
     }    
 

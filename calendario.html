@@ -13,8 +13,8 @@
 
     <body>
         
-        <div class="container">
-
+        <div class="container">            
+            <!--            
             <div id="calendario" class="row">
                 <div class="row calendario-encabezado">
                     <div class="col-xs-1"></div>
@@ -33,21 +33,21 @@
                     
                 </div>
 
-                <div month="4" class="row">
+                <div class="row">
                     <div class="col-xs-1"></div>
                     
                     <div class="col-xs-10">
                         <div class="row calendario-semana">
-                            <div day="4" class="col-xs-1 calendario-dia calendario-dia-fuera-mes">
+                            <div month="2" day="4" class="col-xs-1 calendario-dia calendario-dia-fuera-mes">
                                 <div>4</div>
                             </div>
-                            <div day="5" class="col-xs-1 calendario-dia calendario-dia-fuera-mes">
+                            <div month="2" day="5" class="col-xs-1 calendario-dia calendario-dia-fuera-mes">
                                 <div>5</div>
                             </div>
-                            <div day="6" class="col-xs-1 calendario-dia">
+                            <div month="3" day="6" class="col-xs-1 calendario-dia">
                                 <div>6</div>
                             </div>
-                            <div day="7" class="col-xs-1 calendario-dia calendario-dia-hoy">
+                            <div month="3" day="7" class="col-xs-1 calendario-dia calendario-dia-hoy">
                                 <div>7</div>
                                 <a href="#1">
                                     <span dayTo="10" monthTo="4" size="grande" style="width: 450%" data-toggle="tooltip" data-placement="left" title="Torneo" class="calendario-evento" tipo="torneo">
@@ -61,22 +61,22 @@
                                 <a href="#6"><span data-toggle="tooltip" data-placement="left" title="Entrenamiento" class="calendario-evento" tipo="entrenamiento"><fecha>20:17</fecha><contenido>Entrenamiento</contenido></span></a>
                                 <a href="#7"><span data-toggle="tooltip" data-placement="left" title="Entrenamiento" class="calendario-evento" tipo="entrenamiento"><fecha>20:17</fecha><contenido>Entrenamiento</contenido></span></a>
                             </div>
-                            <div day="8" class="col-xs-1 calendario-dia">
+                            <div month="3" day="8" class="col-xs-1 calendario-dia">
                                 <div>8</div>
                                 <a href="#1"><span fecha="07/04" ofDay="7" ofMonth="4" class="calendario-evento" tipo="torneo"><fecha>07/04</fecha><contenido>Torneoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</contenido></span></a>
                                 <a href="#8"><span data-toggle="tooltip" data-placement="left" title="Amistoso" class="calendario-evento" tipo="amistoso"><fecha>20:17</fecha><contenido>Amistoso</contenido></span></a>
                             </div>
-                            <div day="9" class="col-xs-1 calendario-dia">
+                            <div month="3" day="9" class="col-xs-1 calendario-dia">
                                 <div>9</div>
                                 <a href="#1"><span fecha="07/04" ofDay="7" ofMonth="4" class="calendario-evento" tipo="torneo"><fecha>07/04</fecha><contenido>Torneoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</contenido></span></a>
                             </div>
-                            <div day="10" class="col-xs-1 calendario-dia">
+                            <div month="3" day="10" class="col-xs-1 calendario-dia">
                                 <div>10</div>
                                 <a href="#1"><span fecha="07/04" ofDay="7" ofMonth="4" class="calendario-evento" tipo="torneo"><fecha>07/04</fecha><contenido>Torneoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</contenido></span></a>
                             </div>
                         </div>
                         <div class="row calendario-semana">
-                            <div day="11" class="col-xs-1 calendario-dia">
+                            <div month="3" day="11" class="col-xs-1 calendario-dia">
                                 <div>11</div>
                                 <a href="#1">
                                     <span data-toggle="tooltip" data-placement="left" title="Torneo" class="calendario-evento" ofDay="7" ofMonth="4" dayTo="11" monthTo="4" tipo="torneo">
@@ -84,22 +84,22 @@
                                     </span>
                                 </a>                                
                             </div>
-                            <div day="12" class="col-xs-1 calendario-dia">
+                            <div month="3" day="12" class="col-xs-1 calendario-dia">
                                 <div>12</div>
                             </div>
-                            <div day="13" class="col-xs-1 calendario-dia">
+                            <div month="3" day="13" class="col-xs-1 calendario-dia">
                                 <div>13</div>
                             </div>
-                            <div day="14" class="col-xs-1 calendario-dia">
+                            <div month="3" day="14" class="col-xs-1 calendario-dia">
                                 <div>14</div>
                             </div>
-                            <div day="15" class="col-xs-1 calendario-dia">
+                            <div month="3" day="15" class="col-xs-1 calendario-dia">
                                 <div>15</div>
                             </div>
-                            <div day="16" class="col-xs-1 calendario-dia">
+                            <div month="3" day="16" class="col-xs-1 calendario-dia">
                                 <div>16</div>
                             </div>
-                            <div day="17" class="col-xs-1 calendario-dia">
+                            <div month="3" day="17" class="col-xs-1 calendario-dia">
                                 <div>17</div>
                             </div>
                         </div>
@@ -109,6 +109,7 @@
 
             </div>
             <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click para ir hacia arriba" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+             -->
         </div>
 
         <script src="js/jquery.min.js"></script>
@@ -116,6 +117,7 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                // Scroll Top //
                 $('[data-toggle="tooltip"]').tooltip();
 
                 $(window).scroll(function () {
@@ -134,12 +136,87 @@
                     return false;
                 });
 
-                $('#back-to-top').tooltip('show');  
+                $('#back-to-top').tooltip('show');
+                /////////////////
 
-                $('#calendario .calendario-evento[size="grande"]').on('click', function(e){
-                    e.preventDefault();
-                    console.log('click');
-                });
+                var FEBRERO     = 2;
+                var SEMANAS_MES = 6;
+
+                var iAnioActual  = (new Date().getFullYear());
+                var iMesActual   = (new Date().getMonth()) + 1;
+                var aDiasMeses   = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                var aDiasSemana  = [7, 1, 2, 3, 4, 5, 6]
+
+                var iMesSeleccionado = iMesActual;
+
+                // Calendario //
+                /*
+                    selector -> selector en donde crear el calendario
+                */
+                function crearCalendario(sSelector) {
+                    $(sSelector).append($('<div id="calendario" class="row"></div>'));
+                }
+
+                /*
+                    iMes  -> numero de mes (1-12)
+                    iAnio -> anio a comprobar
+                */
+                function diasMes(iMes, iAnio = iAnioActual) {
+                    if (iMes > 12) { iMes = 12; }
+                    if (iMes < 1)  { iMes = 1;  }
+
+                    let iDias = aDiasMeses[iMes - 1];
+
+                    if (iMes == FEBRERO && esAnioBisiesto(iAnio)) {
+                        iDias++;    
+                    }
+
+                    return iDias;
+                }
+
+                function esAnioBisiesto(iAnio = iAnioActual) {
+                    return ((iAnio % 4 == 0) && ((iAnio % 100 != 0) || (iAnio % 400 == 0)));
+                }
+
+                /*
+                    Genera el encabezado con los dias de la semana
+                */
+                function generarEncabezado() {
+                    var row     = $('<div class="row calendario-encabezado"></div>');
+                    var espacio = $('<div class="col-xs-1"></div>');
+
+                    var colDias   = $('<div class="col-xs-10"></div>');
+                    var rowSemana = $('<div class="row calendario-semana"></div>');
+
+                    for (let d = 0; d < 7; d++) {
+                        let colDiaSemana = $('<div class="col-xs-1 calendario-dia-encabezado"></div>');
+                        rowSemana.append(colDiaSemana);
+                    }
+
+                    colDias.append(rowSemana);
+                    
+                    row.append(espacio);
+                    row.append(colDias);
+
+                    $('#calendario').append(row);
+                }
+
+                function generarSemanasMes(iMes = iMesSeleccionado) {
+                    var row       = $('<div class="row">');
+                    var espacio   = $('<div class="col-xs-1"></div>');
+                    var colSemana = $('<div class="col-xs-10"></div>');
+
+                    var rowSemana = $('<div class="row calendario-semana"></div>');
+                }
+
+                //var prueba = (aDiasSemana[new Date('2018-02-26').getDay()]);
+                //console.log(prueba);
+
+                //crearCalendario('.container');
+                //generarEncabezado();
+
+                ////////////////
+
 
             });        
         </script>
