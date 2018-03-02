@@ -71,7 +71,7 @@
     content: 'Domingo'
 }
 
-#calendario .calendario-dia {
+#calendario .calendario-dia {   
     padding-top: 0px !important;
     padding-right: 5px !important;
     text-align: right !important;
@@ -85,7 +85,7 @@
     background-color: rgb(253, 255, 220);
 }
 
-#calendario .calendario-dia-hoy div {
+#calendario .calendario-dia-hoy > div {
     font-weight: bold;
 }
 
@@ -127,11 +127,11 @@
     background-color: #a3a52d !important;    
 }
 
-#calendario a:nth-child(n+5) span {
+#calendario .calendario-dia > a:nth-child(n+5) span {
     display: none;
 }
 
-#calendario a:nth-child(5)::after {
+#calendario .calendario-dia > a:nth-child(5)::after {
     content: '...';
     color: white;
     text-align: left;
@@ -147,18 +147,48 @@
     padding-right: 4px;
 }
 
-#calendario .calendario-dia span::before {
-    content: attr(hora)" ";
-    font-weight: bold;
+#calendario .calendario-dia fecha {
+    margin-right: 5px;    
 }
 
-#calendario .calendario-dia span {
+#calendario .calendario-dia span[ofDay] > fecha:not([inicio="true"]) {
+    visibility: hidden;
+}
+
+#calendario .calendario-dia span[ofDay] > contenido:not([inicio="true"]) {
+    visibility: hidden;
+}
+
+#calendario .calendario-dia fecha {
+    font-weight: bold;    
+}
+
+#calendario .calendario-evento {
     margin-top: 3px; 
+    margin-left: -15px !important;
+    
     overflow: hidden;
-    white-space: nowrap
+    white-space: nowrap;    
+    text-overflow: ellipsis;    
 }
 
-#calendario .calendario-dia div {
+#calendario .calendario-evento div {
+    position: absolute;
+    z-index: 1;
+
+    top: 27px;
+    left: 44px;
+
+    display: inline-block;
+
+    height: 1.5em;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
+
+#calendario .calendario-dia > div {
     margin-bottom: 5px !important;
 }
 
@@ -179,6 +209,16 @@
         margin-bottom: 8px;
 
         font-size: 14px;
+    }
+
+    #calendario .calendario-evento div {
+        top: 30px !important;
+        left: 50px !important;
+    }
+
+    #calendario span[size="grande"] {
+        /* Se modifica segun dayTo y monthTo */
+        width: 600% !important;
     }
 
     #calendario .calendario-dia-encabezado:nth-child(1)::before {
@@ -206,6 +246,16 @@
 }
 
 @media (max-width: 560px){
+    #calendario span[size="grande"] {
+        /* Se modifica segun dayTo y monthTo */
+        width: 104% !important;
+    }
+    
+    #calendario span[size="grande"] div {
+        /* Se modifica segun dayTo y monthTo */
+        width: 83% !important;
+    }    
+
     #calendario .calendario-semana > div {
         width: 100%;
     }    
@@ -225,6 +275,10 @@
         display: block;
         padding-top: 3px; 
         padding-bottom: 3px; 
+        
+        overflow: hidden;
+        white-space: nowrap;    
+        text-overflow: ellipsis;                
     }
 
     #calendario .calendario-dia:nth-child(n+1):nth-child(-n+7):before {
@@ -232,6 +286,19 @@
         font-size: 20px;
 
         color: #337ab7;
+    }
+
+    #calendario .calendario-evento div {
+        top: 60px !important;
+        left: 52px !important;
+    }
+
+    #calendario .calendario-dia span[ofDay] > fecha:not([inicio="true"]) {
+        visibility: visible;
+    }
+
+    #calendario .calendario-dia span[ofDay] > contenido:not([inicio="true"]) {
+        visibility: visible;
     }
 
     #calendario .calendario-dia:nth-child(1):before {
