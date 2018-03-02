@@ -139,15 +139,30 @@
                 $('#back-to-top').tooltip('show');
                 /////////////////
 
-                var FEBRERO     = 2;
-                var SEMANAS_MES = 6;
+                var LUNES     = 1;
+                var MARTES    = 2;
+                var MIERCOLES = 3;
+                var JUEVES    = 4;
+                var VIERNES   = 5;
+                var SABADO    = 6;
+                var DOMINGO   = 7;
+
+                var ENERO     = 1;
+                var FEBRERO   = 2;
+                var MARZO     = 3;
+                var ABRIL     = 4;
+                var DICIEMBRE = 12;
+
+                var SEMANAS_MES = 6; // Numero de semanas a mostrar en un determinado mes del calendario
 
                 var iAnioActual  = (new Date().getFullYear());
                 var iMesActual   = (new Date().getMonth()) + 1;
                 var aDiasMeses   = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-                var aDiasSemana  = [7, 1, 2, 3, 4, 5, 6]
+                var aDiasSemana  = [7, 1, 2, 3, 4, 5, 6];
 
                 var iMesSeleccionado = iMesActual;
+
+                var aDiasCalendario = [];
 
                 // Calendario //
                 /*
@@ -162,8 +177,8 @@
                     iAnio -> anio a comprobar
                 */
                 function diasMes(iMes, iAnio = iAnioActual) {
-                    if (iMes > 12) { iMes = 12; }
-                    if (iMes < 1)  { iMes = 1;  }
+                    if (iMes > 12) { iMes = 1;  }
+                    if (iMes < 1)  { iMes = 12; }
 
                     let iDias = aDiasMeses[iMes - 1];
 
@@ -209,8 +224,94 @@
                     var rowSemana = $('<div class="row calendario-semana"></div>');
                 }
 
-                //var prueba = (aDiasSemana[new Date('2018-02-26').getDay()]);
-                //console.log(prueba);
+                function xDiaMesDiaSemana(iMes = iMesSeleccionado, iAnio = iAnioActual, iDia = 1) {
+                    var iAnio = iAnioActual;
+
+                    var sDate      = iAnio + '-' + iMes + '-' + iDia;
+                    var iDiaSemana = (new Date(sDate).getDay());
+
+                    return aDiasSemana[iDiaSemana];
+                }
+
+
+                function generarDiasCalendario(iMes = iMesSeleccionado, iAnio = iAnioActual) {
+                    var iDiasMesCalendario = diasMes(iMes, iAnioActual);
+
+                    var iPrimerDiaSemanaMes = xDiaMesDiaSemana(iMes, iAnio);
+                    var iUltimoDiaSemanaMes = xDiaMesDiaSemana(iMes, iAnio, iDiasMesCalendario);
+
+                    var iNumeroDiasAnterioresMes  = 0;
+                    var iNumeroDiasPosterioresMes = 0;
+
+                    var iMesAnterior  = iMes - 1;
+                    var iMesPosterior = iMes + 1;
+
+                    var iAnioAnterior  = iAnio - 1;
+                    var iAnioPosterior = iAnio + 1;
+
+                    var iDiasMesAnterior  = 0;
+                    var iDiasMesPosterior = 0;
+
+                    if (iPrimerDiaSemanaMes > LUNES) {
+                        iNumeroDiasAnterioresMes = iPrimerDiaSemanaMes - LUNES;
+                    }
+
+                    if (iUltimoDiaSemanaMes < DOMINGO) {
+                        iNumeroDiasPosterioresMes = DOMINGO - iUltimoDiaSemanaMes;
+                    }
+
+                    if (iNumeroDiasAnterioresMes > 0) {
+                        let iTempAnio = iAnio;
+
+                        if (iMesAnterior < ENERO) {
+                            iTempAnio = iAnioAnterior;
+                        }
+
+                        iDiasMesAnterior = diasMes(iMesAnterior, iAnioAnterior);
+                    }
+
+                    if (iNumeroDiasPosterioresMes > 0) {
+                        let iTempAnio = iAnio;
+
+                        if (iMesPosterior > DICIEMBRE) {
+                            iTempAnio = iAnioPosterior;
+                        }
+
+                        iDiasMesPosterior = diasMes(iMesPosterior, iAnioPosterior);                    
+                    }
+
+                    for (let d = iNumeroDiasAnterioresMes - 1; d >= 0; d--) {
+                        //console.log(iDiasMesAnterior - d);
+                        aDiasCalendario.push(iDiasMesAnterior - d);
+                    }
+
+                    for (let d = 1; d <= iDiasMesCalendario; d++) {
+                        //console.log(d);
+                        aDiasCalendario.push(d);
+                    }
+
+                    for (let d = 1; d <= iNumeroDiasPosterioresMes; d++) {
+                        //console.log(d);
+                        aDiasCalendario.push(d);
+                    }
+
+                    //console.log('Dias anteriores: '  + iDiasMesAnterior);
+                    //console.log('Dias mes calendario: ' + iDiasMesCalendario);
+                    //console.log('Dias posteriores: ' + iDiasMesPosterior);
+                    
+                    var bMenorDeMaximoSemanas = ((aDiasCalendario.length / 7) < SEMANAS_MES);
+
+                    if (bMenorDeMaximoSemanas) {
+                        for (let d = iNumeroDiasPosterioresMes + 1; d <= (7 + 1); d++) {
+                            aDiasCalendario.push(d);
+                        }
+                    }
+
+                    console.log(aDiasCalendario.toString());
+
+                }
+
+                generarDiasCalendario(ABRIL);
 
                 //crearCalendario('.container');
                 //generarEncabezado();
