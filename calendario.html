@@ -216,6 +216,9 @@
                     $('#calendario').append(row);
                 }
 
+                /*
+                    
+                */
                 function generarSemanasMes(iMes = iMesSeleccionado) {
                     var row       = $('<div class="row">');
                     var espacio   = $('<div class="col-xs-1"></div>');
@@ -224,16 +227,24 @@
                     var rowSemana = $('<div class="row calendario-semana"></div>');
                 }
 
+                /*
+                    Devuelve el dia de la semana de un determinado mes y anio.
+                */
                 function xDiaMesDiaSemana(iMes = iMesSeleccionado, iAnio = iAnioActual, iDia = 1) {
-                    var iAnio = iAnioActual;
-
                     var sDate      = iAnio + '-' + iMes + '-' + iDia;
                     var iDiaSemana = (new Date(sDate).getDay());
 
                     return aDiasSemana[iDiaSemana];
                 }
 
+                /*
+                    Genera los dias del calendario de un determinado mes y anio.
 
+                    El maximo de semanas que aparecen en el calendario se encuentra
+                    en la constante SEMANAS_MES.
+
+                    Devuelve un array.
+                */
                 function generarDiasCalendario(iMes = iMesSeleccionado, iAnio = iAnioActual) {
                     var iDiasMesCalendario = diasMes(iMes, iAnioActual);
 
@@ -281,37 +292,29 @@
                     }
 
                     for (let d = iNumeroDiasAnterioresMes - 1; d >= 0; d--) {
-                        //console.log(iDiasMesAnterior - d);
                         aDiasCalendario.push(iDiasMesAnterior - d);
                     }
 
                     for (let d = 1; d <= iDiasMesCalendario; d++) {
-                        //console.log(d);
                         aDiasCalendario.push(d);
                     }
 
                     for (let d = 1; d <= iNumeroDiasPosterioresMes; d++) {
-                        //console.log(d);
                         aDiasCalendario.push(d);
                     }
-
-                    //console.log('Dias anteriores: '  + iDiasMesAnterior);
-                    //console.log('Dias mes calendario: ' + iDiasMesCalendario);
-                    //console.log('Dias posteriores: ' + iDiasMesPosterior);
-                    
+                                        
                     var bMenorDeMaximoSemanas = ((aDiasCalendario.length / 7) < SEMANAS_MES);
 
                     if (bMenorDeMaximoSemanas) {
-                        for (let d = iNumeroDiasPosterioresMes + 1; d <= (7 + 1); d++) {
+                        for (let d = iNumeroDiasPosterioresMes + 1; d <= (7 + (iNumeroDiasPosterioresMes)); d++) {
                             aDiasCalendario.push(d);
                         }
                     }
 
-                    console.log(aDiasCalendario.toString());
-
+                    return aDiasCalendario;
                 }
 
-                generarDiasCalendario(ABRIL);
+                //console.log(generarDiasCalendario().toString());
 
                 //crearCalendario('.container');
                 //generarEncabezado();
