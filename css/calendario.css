@@ -197,6 +197,11 @@
 }
 
 @media  (max-width: 700px){
+    #calendario {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+
     #calendario .calendario-dia {
         min-height: 170px !important;    
     }
@@ -253,7 +258,7 @@
     
     #calendario span[size="grande"] div {
         /* Se modifica segun dayTo y monthTo */
-        width: 83% !important;
+        width: 85% !important;
     }    
 
     #calendario .calendario-semana > div {
