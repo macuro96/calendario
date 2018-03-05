@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -155,8 +155,11 @@
 
                 var SEMANAS_MES = 6; // Numero de semanas a mostrar en un determinado mes del calendario
 
-                var iAnioActual  = (new Date().getFullYear());
-                var iMesActual   = (new Date().getMonth()) + 1;
+                var iZonaHoraria = (new Date().getTimezoneOffset());
+
+                var iAnioActual  = (new Date().getUTCFullYear());
+                var iMesActual   = (new Date().getUTCMonth()) + 1;
+                var iDiaActual   = (new Date().getUTCDate());
                 var aDiasMeses   = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
                 var aDiasSemana  = [7, 1, 2, 3, 4, 5, 6];
 
@@ -219,12 +222,24 @@
                 /*
                     
                 */
-                function generarSemanasMes(iMes = iMesSeleccionado) {
-                    var row       = $('<div class="row">');
-                    var espacio   = $('<div class="col-xs-1"></div>');
-                    var colSemana = $('<div class="col-xs-10"></div>');
+                function generarSemanaMes(iDia, iMes, bAnteriorMes = false, bPosteriorMes = false) {
+                    if (iMes > 12) { iMes = 1;  }
+                    if (iMes < 1)  { iMes = 12; }
 
-                    var rowSemana = $('<div class="row calendario-semana"></div>');
+                    var colDia = $('<div month="'+iMes+'" day="'+iDia+'" class="col-xs-1 calendario-dia"></div>');
+                    var divDia = $('<div>'+iDia+'</div>');
+
+                    if (iMes == iMesActual && iDia == iDiaActual) {
+                        colDia.addClass('calendario-dia-hoy');
+                    }
+                    
+                    if (bAnteriorMes || bPosteriorMes) {
+                        colDia.addClass('calendario-dia-fuera-mes');
+                    }
+
+                    colDia.append(divDia);
+                                    
+                    return colDia;
                 }
 
                 /*
@@ -232,7 +247,7 @@
                 */
                 function xDiaMesDiaSemana(iMes = iMesSeleccionado, iAnio = iAnioActual, iDia = 1) {
                     var sDate      = iAnio + '-' + iMes + '-' + iDia;
-                    var iDiaSemana = (new Date(sDate).getDay());
+                    var iDiaSemana = (new Date(sDate).getUTCDay());
 
                     return aDiasSemana[iDiaSemana];
                 }
@@ -291,33 +306,82 @@
                         iDiasMesPosterior = diasMes(iMesPosterior, iAnioPosterior);                    
                     }
 
+                    var row       = $('<div class="row">');
+                    var espacio   = $('<div class="col-xs-1"></div>');
+                    var colSemana = $('<div class="col-xs-10"></div>');
+
+                    var rowSemana;
+
+                    var contDia = 1;
+
                     for (let d = iNumeroDiasAnterioresMes - 1; d >= 0; d--) {
-                        aDiasCalendario.push(iDiasMesAnterior - d);
+                        let iDia = iDiasMesAnterior - d;
+
+                        if ((contDia == 1) || ((contDia - 1) % 7 == 0)) {
+                            rowSemana = $('<div class="row calendario-semana"></div>');
+                            colSemana.append(rowSemana);
+                        }
+
+                        rowSemana.append(generarSemanaMes(iDia, iMes - 1, true));
+
+                        contDia++;
+                        aDiasCalendario.push(iDia);
                     }
 
-                    for (let d = 1; d <= iDiasMesCalendario; d++) {
+                    for (let d = 1; d <= iDiasMesCalendario; d++) {                        
+                        if ((contDia == 1) || ((contDia - 1) % 7 == 0)) {
+                            rowSemana = $('<div class="row calendario-semana"></div>');
+                            colSemana.append(rowSemana);
+                        }
+
+                        rowSemana.append(generarSemanaMes(d, iMes));
+
+                        contDia++;
                         aDiasCalendario.push(d);
                     }
 
                     for (let d = 1; d <= iNumeroDiasPosterioresMes; d++) {
+                        if ((contDia == 1) || ((contDia - 1) % 7 == 0)) {
+                            rowSemana = $('<div class="row calendario-semana"></div>');
+                            colSemana.append(rowSemana);
+                        }
+
+                        rowSemana.append(generarSemanaMes(d, iMes, false, true));
+
+                        contDia++;
                         aDiasCalendario.push(d);
                     }
-                                        
+                    
                     var bMenorDeMaximoSemanas = ((aDiasCalendario.length / 7) < SEMANAS_MES);
-
+                    
                     if (bMenorDeMaximoSemanas) {
                         for (let d = iNumeroDiasPosterioresMes + 1; d <= (7 + (iNumeroDiasPosterioresMes)); d++) {
+                            if ((contDia == 1) || ((contDia - 1) % 7  == 0)) {
+                                rowSemana = $('<div class="row calendario-semana"></div>');
+                                colSemana.append(rowSemana);
+                            }
+
+                            rowSemana.append(generarSemanaMes(d, iMes + 1, false, true));
+
+                            contDia++;
                             aDiasCalendario.push(d);
                         }
                     }
+
+                    row.append(espacio);
+                    row.append(colSemana);
+
+                    $('#calendario').append(row);
 
                     return aDiasCalendario;
                 }
 
                 //console.log(generarDiasCalendario().toString());
+                //console.log(iZonaHoraria);
 
-                //crearCalendario('.container');
-                //generarEncabezado();
+                crearCalendario('.container');
+                generarEncabezado();
+                generarDiasCalendario();
 
                 ////////////////
 
